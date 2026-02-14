@@ -16,7 +16,7 @@ jobs:
       uses: docker/metadata-action@v4
       id: meta
       with:
-        images: flared/docker-mcpdocs
+        images: flared/mcpdocs
     - uses: docker/login-action@v2
       if: github.event_name != 'pull_request'
       with:
