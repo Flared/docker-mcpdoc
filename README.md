@@ -1,3 +1,6 @@
 # docker-mcpdoc
 
-Image: `ghcr.io/flared/docker-mcpdoc`
+Image:
+```
+docker pull ghcr.io/flared/docker-mcpdoc:latest
+```
