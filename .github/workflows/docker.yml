@@ -10,18 +10,21 @@ on:
 jobs:
   release-docker:
     runs-on: ubuntu-latest
+    permissions:
+      packages: write
     steps:
     - uses: actions/checkout@v2
     - name: Docker meta
       uses: docker/metadata-action@v4
       id: meta
       with:
-        images: flared/mcpdoc
+        images: ghcr.io/flared/docker-mcpdoc
     - uses: docker/login-action@v2
       if: github.event_name != 'pull_request'
       with:
-        username: ${{ secrets.DOCKERHUB_USERNAME }}
-        password: ${{ secrets.DOCKERHUB_TOKEN }}
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v2
     - name: Set up Docker Buildx
